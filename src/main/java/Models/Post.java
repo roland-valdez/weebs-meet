@@ -2,6 +2,7 @@ package Models;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name="post")
@@ -20,7 +21,7 @@ public class Post {
     private String image;
 
     @Column(name="post_created")
-    private java.sql.Date post_created;
+    private java.sql.Timestamp post_created;
 
     public long getId() {
         return id;
@@ -54,11 +55,11 @@ public class Post {
         this.image = image;
     }
 
-    public Date getPost_created() {
+    public Timestamp getPost_created() {
         return post_created;
     }
 
-    public void setPost_created(Date post_created) {
+    public void setPost_created(Timestamp post_created) {
         this.post_created = post_created;
     }
 }

@@ -2,6 +2,7 @@ package Models;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name="comment")
@@ -14,7 +15,7 @@ public class Comment {
     private String comment;
 
     @Column(name="comment_created")
-    private java.sql.Date comment_created;
+    private Timestamp comment_created;
 
     public long getId() {
         return id;
@@ -32,11 +33,11 @@ public class Comment {
         this.comment = comment;
     }
 
-    public Date getComment_created() {
+    public Timestamp getComment_created() {
         return comment_created;
     }
 
-    public void setComment_created(Date comment_created) {
+    public void setComment_created(Timestamp comment_created) {
         this.comment_created = comment_created;
     }
 }
