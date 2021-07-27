@@ -1,3 +1,5 @@
+package Models;
+
 import javax.persistence.*;
 
 @Entity
@@ -24,6 +26,10 @@ public class User {
 
     @Column(nullable = false)
     private String username;
+
+    @Column(name="comment_created")
+    private java.sql.Date user_created;
+
 
 
 
@@ -83,4 +89,5 @@ public class User {
     public void setUsername(String username) {
         this.username = username;
     }
+
 }
