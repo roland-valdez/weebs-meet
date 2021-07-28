@@ -1,6 +1,7 @@
 package Models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="users")
@@ -29,6 +30,15 @@ public class User {
 
     @Column(name="comment_created")
     private java.sql.Date user_created;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Post> posts;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Comment> comments;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Like> likes;
 
 
 
