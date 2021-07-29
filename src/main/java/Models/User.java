@@ -40,6 +40,12 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Like> likes;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Message> messages;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Conversation> conversations;
+
 
 
 
