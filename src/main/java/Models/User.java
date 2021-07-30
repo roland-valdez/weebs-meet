@@ -10,13 +10,13 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 30)
     private String email;
 
-    @Column(nullable = false)
+    @Column(nullable = false,length = 15)
     private String firstName;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 35)
     private String lastName;
 
     @Column(nullable = false)
@@ -25,7 +25,7 @@ public class User {
     @Column (nullable = true)
     private String user_Img;
 
-    @Column(nullable = false)
+    @Column(nullable = false,length = 20)
     private String username;
 
     @Column(name="comment_created")
