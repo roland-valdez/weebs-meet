@@ -23,8 +23,33 @@ public class Post {
     @Column(name="post_created")
     private java.sql.Timestamp post_created;
 
+    @ManyToOne
+    @JoinColumn(name= "user_id")
+    private User user;
+
     public long getId() {
         return id;
+    }
+
+    public Post(){
+
+    }
+
+    public Post(String description, String video, String image, Timestamp post_created, User user) {
+        this.description = description;
+        this.video = video;
+        this.image = image;
+        this.post_created = post_created;
+        this.user = user;
+    }
+
+    public Post(long id, String description, String video, String image, Timestamp post_created, User user) {
+        this.id = id;
+        this.description = description;
+        this.video = video;
+        this.image = image;
+        this.post_created = post_created;
+        this.user = user;
     }
 
     public void setId(long id) {
@@ -53,6 +78,14 @@ public class Post {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Timestamp getPost_created() {
