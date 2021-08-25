@@ -16,6 +16,10 @@ public class Message {
     @Column
     private Timestamp timestamp;
 
+    @ManyToOne
+    @JoinColumn(name= "user")
+    private User user;
+
     public long getId() {
         return id;
     }
