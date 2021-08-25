@@ -10,10 +10,27 @@ public class Block_User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @OneToMany(mappedBy = "user")
-    private List<User> users;
+   @ManyToOne
+   @JoinColumn(name = "user_id", referencedColumnName = "id")
+   private User user;
 
+   //constructor
+   public Block_User(){
 
+   }
+
+   public Block_User(long id, User user){
+       this.id=id;
+       this.user = user;
+   }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public long getId() {
         return id;
