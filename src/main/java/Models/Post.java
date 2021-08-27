@@ -11,6 +11,9 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Column(nullable = false, length = 100)
+    private String title;
+
     @Column(nullable = false, length = 200)
     private String description;
 
@@ -27,6 +30,13 @@ public class Post {
     @JoinColumn(name= "user_id")
     private User user;
 
+    public Post(String title, String video, String image, String description) {
+    this.title=title;
+    this.description=description;
+    this.image=image;
+    this.video=video;
+    }
+
     public long getId() {
         return id;
     }
@@ -35,21 +45,23 @@ public class Post {
 
     }
 
-    public Post(String description, String video, String image, Timestamp post_created, User user) {
+    public Post(String description,String title, String video, String image, Timestamp post_created, User user) {
         this.description = description;
         this.video = video;
         this.image = image;
         this.post_created = post_created;
         this.user = user;
+        this.title=title;
     }
 
-    public Post(long id, String description, String video, String image, Timestamp post_created, User user) {
+    public Post(long id,String title, String description, String video, String image, Timestamp post_created, User user) {
         this.id = id;
         this.description = description;
         this.video = video;
         this.image = image;
         this.post_created = post_created;
         this.user = user;
+        this.title=title;
     }
 
     public void setId(long id) {
@@ -94,5 +106,13 @@ public class Post {
 
     public void setPost_created(Timestamp post_created) {
         this.post_created = post_created;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

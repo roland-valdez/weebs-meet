@@ -59,10 +59,21 @@ public class PostController {
     @PostMapping(value= "/post/edit/{id}")
     public String saveEditedPost(@PathVariable long id, @ModelAttribute Post post){
         postDao.save(post);
-        return "profilePage";
+        return "profile";
     }
 
+    @GetMapping(value="/post/add")
+    public String addPost(@RequestParam(name="addPost") String title, @RequestParam String description, @RequestParam String video, @RequestParam String image){
+        Post post = new Post( title, video, image, description);
+        postDao.save(post);
+        return "redirect: /profile";
+    }
 
+    @GetMapping(value="/post/create")
+    public String createPost(Model model){
+        model.addAttribute("addPost", new Post());
+        return "/post/create";
+    }
 
 
 }
