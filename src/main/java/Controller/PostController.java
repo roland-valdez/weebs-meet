@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class PostController {
 
-    private PostRepository postDao;
+    private final PostRepository postDao;
 
-    private UserRepository userDao;
-    private CommentRepository commentDao;
+    private final UserRepository userDao;
+    private final CommentRepository commentDao;
     public PostController(PostRepository postDao, UserRepository userDao, CommentRepository commentDao){
         this.postDao= postDao;
         this.userDao=userDao;
