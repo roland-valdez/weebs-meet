@@ -55,6 +55,13 @@ public class PostController {
         return "post/edit";
     }
 
+    //save edited changes
+    @PostMapping(value= "/post/edit/{id}")
+    public String saveEditedPost(@PathVariable long id, @ModelAttribute Post post){
+        postDao.save(post);
+        return "profilePage";
+    }
+
 
 
 
