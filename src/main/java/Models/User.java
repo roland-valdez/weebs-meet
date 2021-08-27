@@ -1,6 +1,7 @@
 package Models;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.util.List;
 
 @Entity
@@ -46,9 +47,28 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Conversation> conversations;
 
+    public User(){
 
+    }
 
+    public User(Long id, String email, String firstName, String lastName, String password, String username) {
+        this.id = id;
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+        this.username=username;
+    }
 
+    public User(String email, String firstName, String lastName, String password, String user_Img, String username, Date user_created) {
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+        this.user_Img = user_Img;
+        this.username = username;
+        this.user_created = user_created;
+    }
 
     public Long getId() {
         return id;
