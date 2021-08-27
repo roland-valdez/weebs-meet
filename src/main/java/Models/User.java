@@ -70,6 +70,18 @@ public class User {
         this.user_created = user_created;
     }
 
+    public User(User copy){
+        id= copy.id;
+        email= copy.email;
+        firstName = copy.firstName;
+        lastName= copy.lastName;
+        password= copy.password;
+        username = copy.username;
+        user_created = copy.user_created;
+        user_Img = copy.user_Img;
+
+    }
+
     public Long getId() {
         return id;
     }
