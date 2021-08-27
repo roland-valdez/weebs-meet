@@ -61,19 +61,31 @@ public class PostController {
         postDao.save(post);
         return "profile";
     }
-
+//get info about post from form to add
     @GetMapping(value="/post/add")
     public String addPost(@RequestParam(name="addPost") String title, @RequestParam String description, @RequestParam String video, @RequestParam String image){
         Post post = new Post( title, video, image, description);
         postDao.save(post);
         return "redirect: /profile";
     }
-
+// get form to create a new post
     @GetMapping(value="/post/create")
     public String createPost(Model model){
         model.addAttribute("addPost", new Post());
         return "/post/create";
     }
-
+//save created post
+    @PostMapping(value="post/create")
+    public String savePost(@ModelAttribute Post post){
+        post.setUser(userDao.getById(post.getId()));
+        Post savePost = postDao.save(post);
+        return "redirect:/post" + savePost.getId();
+    }
+    //destroy post
+    @PostMapping(value = "post/delete")
+    public String deletePost(@RequestParam long id){
+        postDao.deleteById(id);
+        return "profile";
+    }
 
 }
