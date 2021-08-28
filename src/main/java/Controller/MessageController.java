@@ -5,9 +5,7 @@ import dao.MessageRepository;
 import dao.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class MessageController {
@@ -31,11 +29,16 @@ public class MessageController {
 
 
     @GetMapping(value="message/add")
-    public String addMessage(@RequestParam(name="addMessage") String text){
+    public String getComposeMessage(@RequestParam(name="composeMessage") String text){
         Message newMessage= new Message(text);
         messageDao.save(newMessage);
         return "/message";
     }
 
-
+    @PostMapping(value= "message/create")
+    public String saveCreatedMessage(@ModelAttribute Message message){
+        message.setUser(userDao.getById(message.getId()));
+        Message saveMessage = messageDao.save(message);
+        return "redirect: /message" + saveMessage.getId();
+    }
 }

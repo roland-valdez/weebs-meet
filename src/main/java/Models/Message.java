@@ -27,10 +27,11 @@ public class Message {
    public Message(String text){
        this.text=text;
    }
-   public Message(long id, String text, Timestamp timestamp){
+   public Message(long id, String text, Timestamp timestamp, User user){
        this.id=id;
        this.text=text;
        this.timestamp=timestamp;
+       this.user = user;
    }
 
     public long getId() {
@@ -55,5 +56,13 @@ public class Message {
 
     public void setTimestamp(Timestamp timestamp) {
         this.timestamp = timestamp;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
