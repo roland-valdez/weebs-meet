@@ -41,4 +41,10 @@ public class MessageController {
         Message saveMessage = messageDao.save(message);
         return "redirect: /message" + saveMessage.getId();
     }
+
+    @PostMapping(value="message/delete")
+    public String deleteMessage(@RequestParam long id){
+        messageDao.deleteById(id);
+        return "redirect: messages";
+    }
 }
