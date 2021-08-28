@@ -11,7 +11,7 @@ public class Message {
     private long id;
 
     @Column(nullable = false)
-    private String message;
+    private String text;
 
     @Column
     private Timestamp timestamp;
@@ -19,6 +19,19 @@ public class Message {
     @ManyToOne
     @JoinColumn(name= "user")
     private User user;
+
+   public Message(){
+
+   }
+
+   public Message(String text){
+       this.text=text;
+   }
+   public Message(long id, String text, Timestamp timestamp){
+       this.id=id;
+       this.text=text;
+       this.timestamp=timestamp;
+   }
 
     public long getId() {
         return id;
@@ -28,12 +41,12 @@ public class Message {
         this.id = id;
     }
 
-    public String getMessage() {
-        return message;
+    public String getText() {
+        return text;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setText(String text) {
+        this.text = text;
     }
 
     public Timestamp getTimestamp() {

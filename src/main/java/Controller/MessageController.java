@@ -1,11 +1,13 @@
 package Controller;
 
+import Models.Message;
 import dao.MessageRepository;
 import dao.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class MessageController {
@@ -27,6 +29,13 @@ public class MessageController {
     return "redirect:/message/{id}";
     }
 
+
+    @GetMapping(value="message/add")
+    public String addMessage(@RequestParam(name="addMessage") String text){
+        Message newMessage= new Message(text);
+        messageDao.save(newMessage);
+        return "/message";
+    }
 
 
 }
