@@ -47,4 +47,6 @@ public class MessageController {
         messageDao.deleteById(id);
         return "redirect: messages";
     }
+
+    // crud dont kindof need to figure out how to send outgoing message to other users
 }
