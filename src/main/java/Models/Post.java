@@ -5,7 +5,7 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name="post")
+@Table(name="posts")
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,10 +24,10 @@ public class Post {
     private String image;
 
     @Column(name="post_created")
-    private java.sql.Timestamp post_created;
+    private Date post_created;
 
-    @ManyToOne
-    @JoinColumn(name= "user_id")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name= "user_id", referencedColumnName = "id")
     private User user;
 
     public Post(String title, String video, String image, String description) {
@@ -45,7 +45,7 @@ public class Post {
 
     }
 
-    public Post(String description,String title, String video, String image, Timestamp post_created, User user) {
+    public Post(String description,String title, String video, String image, Date post_created, User user) {
         this.description = description;
         this.video = video;
         this.image = image;
@@ -54,7 +54,7 @@ public class Post {
         this.title=title;
     }
 
-    public Post(long id,String title, String description, String video, String image, Timestamp post_created, User user) {
+    public Post(long id,String title, String description, String video, String image, Date post_created, User user) {
         this.id = id;
         this.description = description;
         this.video = video;
@@ -100,11 +100,11 @@ public class Post {
         this.user = user;
     }
 
-    public Timestamp getPost_created() {
+    public Date getPost_created() {
         return post_created;
     }
 
-    public void setPost_created(Timestamp post_created) {
+    public void setPost_created(Date post_created) {
         this.post_created = post_created;
     }
 
