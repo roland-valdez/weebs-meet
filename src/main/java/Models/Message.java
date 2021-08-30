@@ -16,6 +16,9 @@ public class Message {
     @Column
     private Timestamp timestamp;
 
+    @Column(nullable=false)
+    private String photo;
+
     @ManyToOne
     @JoinColumn(name= "user")
     private User sender;
