@@ -16,8 +16,7 @@ public class Message {
     @Column
     private Timestamp timestamp;
 
-    @Column(nullable=false)
-    private String photo;
+
 
     @ManyToOne
     @JoinColumn(name= "user")
@@ -86,5 +85,10 @@ public class Message {
 
     public void setReceiver(User receiver) {
         this.receiver = receiver;
+    }
+
+
+    public void setUser() {
+
     }
 }

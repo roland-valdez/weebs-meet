@@ -36,8 +36,9 @@ public class MessageController {
     }
 
     @PostMapping(value= "message/create")
-    public String saveCreatedMessage(@ModelAttribute Message message){
-        message.setUser(userDao.getById(message.getId()));
+    public String saveCreatedMessage(@ModelAttribute Message message, Model model){
+        model.addAttribute("sender",message.getSender());
+        message.setReceiver(userDao.getById(message.getId()));
         Message saveMessage = messageDao.save(message);
         return "redirect: /message" + saveMessage.getId();
     }
