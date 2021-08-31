@@ -1,4 +1,4 @@
-package Models;
+package com.example.geeksmeet.Models;
 
 import javax.persistence.*;
 

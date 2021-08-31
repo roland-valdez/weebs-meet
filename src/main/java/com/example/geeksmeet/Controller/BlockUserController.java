@@ -1,4 +1,4 @@
-package Controller;
+package com.example.geeksmeet.Controller;
 
 import org.springframework.stereotype.Controller;
 
